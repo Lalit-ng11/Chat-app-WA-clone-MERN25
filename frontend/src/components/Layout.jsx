@@ -9,11 +9,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function Layout({ children, isThemeDialogOpen, toggleThemeDialog, isStatusPreviewOpen, statusPreviewContent }) {
     const selectedContact = useLayoutStore((state) => state.selectedContact)
     const setSelectedContact = useLayoutStore((state) => state.setSelectedContact)
-    const location = useLocation()
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
     const { theme, setTheme } = useThemeStore()
 
-    const isUserDetailsPage = location.pathname === '/user-details'
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768)
@@ -34,7 +32,7 @@ export default function Layout({ children, isThemeDialogOpen, toggleThemeDialog,
                             animate={{ x: 0 }}
                             exit={{ x: '-100%' }}
                             transition={{ type: 'tween' }}
-                            className={`${isUserDetailsPage ? 'w-full md:w-2/5' : 'w-full md:w-2/5'} h-full ${isMobile ? 'pb-16' : ''}`}
+                            className={` w-full md:w-2/5 h-full ${isMobile ? 'pb-16' : ''}`}
                         >
                             {children}
                         </motion.div>

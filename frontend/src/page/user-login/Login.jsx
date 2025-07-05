@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaLock, FaUser, FaCamera, FaCheck, FaPlus, FaArrowLeft, FaChevronDown } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
@@ -66,7 +66,6 @@ const Login = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(avatars[0])
   const [profilePictureFile, setProfilePictureFile] = useState(null)
   const [error, setError] = useState('')
-  const dropdownRef = useRef(null)
   const [loading, setLoading] = useState(false)
   const {  setUser } = useUserStore()
   const { theme } = useThemeStore()
@@ -98,17 +97,7 @@ const {
   })
   
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+
 
   const filteredCountries = countries.filter(
     (country) =>
@@ -275,7 +264,7 @@ const {
                     <FaChevronDown className="ml-2" />
                   </button>
                   {showDropdown && (
-                    <div ref={dropdownRef} className={`absolute z-10 w-full mt-1 ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} border rounded-md shadow-lg max-h-60 overflow-auto`}>
+                    <div  className={`absolute z-10 w-full mt-1 ${theme === 'dark' ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} border rounded-md shadow-lg max-h-60 overflow-auto`}>
                       <div className={`sticky top-0 ${theme === 'dark' ? 'bg-gray-700' : 'bg-white'} p-2`}>
                         <input
                           type="text"

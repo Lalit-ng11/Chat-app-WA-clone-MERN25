@@ -10,7 +10,6 @@ import { useChatStore } from '../store/chatStore'
 
 
 export default function HomeScreen() {
-    const setSelectedContact = useLayoutStore((state) => state.setSelectedContact)
     const [allUsers,setAllUsers] = useState([])
     const {messages} = useChatStore();
     
@@ -38,7 +37,7 @@ export default function HomeScreen() {
                 transition={{ duration: 0.5 }}
                 className="h-full"
             >
-                <ChatList contacts={allUsers} setSelectedContact={setSelectedContact} />
+                <ChatList contacts={allUsers} />
             </motion.div>
         </Layout>
     )

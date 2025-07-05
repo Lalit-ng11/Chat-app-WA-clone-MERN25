@@ -28,7 +28,7 @@ const Sidebar = () => {
         } else if (location.pathname === '/status') {
             setActiveTab('status');
         } else if (location.pathname === '/user-details') {
-            setActiveTab('user');
+            setActiveTab('profile');
         } else if (location.pathname === '/setting') {
             setActiveTab('setting');
         }
@@ -59,7 +59,7 @@ const Sidebar = () => {
                 />
             </Link>
             {!isMobile && <div className="flex-grow" />}
-            <Link to="/user-details" className={`${isMobile ? '' : 'mb-8'} ${activeTab === 'user' && 'bg-gray-300 shadow-sm p-2 rounded-full'}  focus:outline-none`}>
+            <Link to="/user-details" className={`${isMobile ? '' : 'mb-8'} ${activeTab === 'profile' && 'bg-gray-300 shadow-sm p-2 rounded-full'}  focus:outline-none`}>
                 {user?.profilePicture ? (
                     <img
                         src={user.profilePicture}
@@ -69,7 +69,7 @@ const Sidebar = () => {
                 ) : (
                     <FaUserCircle
                     className={`h-6 w-6 ${
-                      activeTab === 'status' 
+                      activeTab === 'profile' 
                       ? (theme === 'dark' ? 'text-gray-800 ' : '') 
                       : (theme === 'dark' ? 'text-gray-300' : 'text-gray-800')
                     }`}
