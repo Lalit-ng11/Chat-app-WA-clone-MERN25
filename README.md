@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💬 WhatsApp Clone - Full Stack Realtime Chat App
 
 A production-ready full-stack WhatsApp Clone built with **React js** and **Node.js (Express + MongoDB)**. It includes powerful real-time features using **Socket.IO**, secure **authentication via mobile (Twilio)** and **email OTP (Nodemailer)**, plus rich chat functionalities like media sharing, reactions, themes, and more.
@@ -114,3 +115,6 @@ Create a .env file inside frontend/:
 REACT_APP_API_URL=http://localhost:8000
 
 npm start
+=======
+# Chat-app-WA-clone-MERN25
+>>>>>>> 59e25ef8155d6187e9bd7b77d03e07abc272d7be
