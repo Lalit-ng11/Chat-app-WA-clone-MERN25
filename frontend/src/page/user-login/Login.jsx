@@ -14,6 +14,7 @@ import useUserStore from '../../store/useUserStore'
 import useThemeStore from '../../store/themeStore'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../../utils/Spinner'
+import Flag from 'react-world-flags';
 
 // Validation schemas
 const loginValidationSchema = yup.object().shape({
@@ -260,7 +261,11 @@ const {
                     className={`flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center ${theme === 'dark' ? 'text-white bg-gray-700 border-gray-600' : 'text-gray-900 bg-gray-100 border-gray-300'} border rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100`}
                     onClick={() => setShowDropdown(!showDropdown)}
                   >
-                    <span>{selectedCountry.flag} {selectedCountry.dialCode}</span>
+                    <span>  <Flag
+                                            code={selectedCountry.alpha2}
+                                            fallback={<span>{selectedCountry.flag}</span>}
+                                            className="h-5 mr-2"
+                                          /> {selectedCountry.dialCode}</span>
                     <FaChevronDown className="ml-2" />
                   </button>
                   {showDropdown && (

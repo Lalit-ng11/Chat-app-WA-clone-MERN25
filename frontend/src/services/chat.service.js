@@ -10,7 +10,7 @@ export const initializeSocket = () => {
   
   if (!user?._id) return null;
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080";
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
   
   socket = io(BACKEND_URL, {
     withCredentials: true,

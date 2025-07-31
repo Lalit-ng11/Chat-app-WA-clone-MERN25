@@ -18,7 +18,7 @@ import useThemeStore from "../../store/themeStore";
 import useUserStore from "../../store/useUserStore";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { useChatStore } from "../../store/chatStore";
-import whatsappImage from '../../images/whatsapp_image.png'
+import whatsappImage from "../../images/whatsapp_image.png";
 
 const isValidDate = (date) => {
   return date instanceof Date && !isNaN(date);
@@ -51,7 +51,7 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
     fetchConversations,
     conversations,
     addReaction,
-    deleteMessage
+    deleteMessage,
   } = useChatStore();
 
   // Get online status and last seen
@@ -59,7 +59,7 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
   const lastSeen = getUserLastSeen(selectedContact?._id);
   const isTyping = isUserTyping(selectedContact?._id);
 
-  console.log(isTyping)
+  console.log(isTyping);
   useEffect(() => {
     if (selectedContact?._id && conversations?.data?.length > 0) {
       const conversation = conversations.data.find((conv) =>
@@ -127,7 +127,7 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
-      setShowFileMenu(false)
+      setShowFileMenu(false);
       if (file.type.startsWith("image/")) {
         setFilePreview(URL.createObjectURL(file));
       }
@@ -136,25 +136,25 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
 
   const handleSendMessage = async () => {
     if (!selectedContact) return;
-   setFilePreview(null);
+    setFilePreview(null);
     try {
       const formData = new FormData();
 
       formData.append("senderId", user._id);
       formData.append("receiverId", selectedContact._id);
 
-     const status = online ? "delivered" : "send";
+      const status = online ? "delivered" : "send";
       formData.append("messageStatus", status);
 
-  if (message.trim()) {
-      formData.append("content", message.trim());
-    }
-    // If there's a file, include that too
-    if (selectedFile) {
-      formData.append("media", selectedFile, selectedFile.name);
-    }
-    // If neither, do nothing
-    if (!message.trim() && !selectedFile) return;
+      if (message.trim()) {
+        formData.append("content", message.trim());
+      }
+      // If there's a file, include that too
+      if (selectedFile) {
+        formData.append("media", selectedFile, selectedFile.name);
+      }
+      // If neither, do nothing
+      if (!message.trim() && !selectedFile) return;
 
       await sendMessage(formData);
 
@@ -217,7 +217,6 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
       }, {})
     : {};
 
-
   const handleReaction = (messageId, emoji) => {
     addReaction(messageId, emoji);
   };
@@ -225,11 +224,11 @@ export default function ChatWindow({ selectedContact, setSelectedContact }) {
     return (
       <div className="flex-1  flex flex-col items-center justify-center mx-auto h-screen text-center">
         <div className="max-w-md">
-            <img
-              src={whatsappImage}
-              alt="Chat Application"
-              className="w-full h-auto"
-            />
+          <img
+            src={whatsappImage}
+            alt="Chat Application"
+            className="w-full h-auto"
+          />
           <h2
             className={`text-3xl font-semibold mb-4 ${
               theme === "dark" ? "text-white" : "text-black"
